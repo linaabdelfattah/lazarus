@@ -1,26 +1,56 @@
-object Form1: TForm1
-  Left = 256
-  Height = 348
-  Top = 145
-  Width = 775
-  Caption = 'Form1'
-  ClientHeight = 348
-  ClientWidth = 775
+object EditNumero: TEditNumero
+  Left = 784
+  Height = 240
+  Top = 248
+  Width = 519
+  Caption = 'EditNumero'
+  ClientHeight = 240
+  ClientWidth = 519
+  Font.CharSet = ANSI_CHARSET
+  Font.Color = clTeal
+  Font.Name = 'Segoe UI Semibold'
+  Font.Pitch = fpVariable
+  Font.Quality = fqDraft
+  Font.Style = [fsBold, fsItalic]
+  OnCreate = FormCreate
   LCLVersion = '3.6.0.0'
-  object Button1: TButton
-    Left = 216
-    Height = 25
-    Top = 169
-    Width = 75
-    Caption = 'Button1'
-    TabOrder = 0
-    OnClick = Button1Click
-  end
   object Label1: TLabel
-    Left = 402
+    Left = 32
     Height = 15
-    Top = 176
-    Width = 34
-    Caption = 'Label1'
+    Top = 24
+    Width = 226
+    Caption = 'Ho pensato un numero da 1 a 100. Quale?'
+  end
+  object EditNumero: TEdit
+    Left = 32
+    Height = 23
+    Top = 56
+    Width = 80
+    TabOrder = 0
+  end
+  object ButtonProva: TButton
+    Left = 152
+    Height = 25
+    Top = 56
+    Width = 75
+    Caption = 'Prova'
+    TabOrder = 1
+    OnClick = ButtonProvaClick
+  end
+  object ButtonNuova: TButton
+    Left = 280
+    Height = 25
+    Top = 56
+    Width = 94
+    Caption = 'Nuova partita'
+    TabOrder = 2
+    OnClick = ButtonNuovaClick
+  end
+  object LabelRisposta: TLabel
+    Left = 246
+    Height = 15
+    Top = 99
+    Width = 74
+    Caption = 'LabelRisposta'
   end
 end
