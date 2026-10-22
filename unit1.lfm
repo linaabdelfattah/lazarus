@@ -1,56 +1,79 @@
-object EditNumero: TEditNumero
-  Left = 784
-  Height = 240
-  Top = 248
-  Width = 519
-  Caption = 'EditNumero'
-  ClientHeight = 240
-  ClientWidth = 519
-  Font.CharSet = ANSI_CHARSET
-  Font.Color = clTeal
-  Font.Name = 'Segoe UI Semibold'
-  Font.Pitch = fpVariable
-  Font.Quality = fqDraft
-  Font.Style = [fsBold, fsItalic]
-  OnCreate = FormCreate
+object Form1: TForm1
+  Left = 965
+  Height = 584
+  Top = 110
+  Width = 508
+  Caption = ' Il salvadanaio di Lina'
+  ClientHeight = 584
+  ClientWidth = 508
+  Color = clSilver
   LCLVersion = '3.6.0.0'
   object Label1: TLabel
-    Left = 32
+    Left = 24
     Height = 15
-    Top = 24
-    Width = 226
-    Caption = 'Ho pensato un numero da 1 a 100. Quale?'
+    Top = 56
+    Width = 133
+    Caption = 'Che cosa vuoi comprare?'
   end
-  object EditNumero: TEdit
-    Left = 32
+  object Edit1: TEdit
+    Left = 192
     Height = 23
     Top = 56
     Width = 80
     TabOrder = 0
+    Text = 'profumo'
   end
-  object ButtonProva: TButton
-    Left = 152
-    Height = 25
-    Top = 56
-    Width = 75
-    Caption = 'Prova'
-    TabOrder = 1
-    OnClick = ButtonProvaClick
-  end
-  object ButtonNuova: TButton
-    Left = 280
-    Height = 25
-    Top = 56
-    Width = 94
-    Caption = 'Nuova partita'
-    TabOrder = 2
-    OnClick = ButtonNuovaClick
-  end
-  object LabelRisposta: TLabel
-    Left = 246
+  object Label2: TLabel
+    Left = 24
     Height = 15
-    Top = 99
-    Width = 74
-    Caption = 'LabelRisposta'
+    Top = 96
+    Width = 76
+    Caption = 'Quanto costa?'
+  end
+  object Edit2: TEdit
+    Left = 160
+    Height = 23
+    Top = 96
+    Width = 80
+    TabOrder = 1
+    Text = '40'
+  end
+  object Button1: TButton
+    Left = 32
+    Height = 25
+    Top = 168
+    Width = 96
+    Caption = 'Una settimana '
+    TabOrder = 2
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 176
+    Height = 25
+    Top = 168
+    Width = 163
+    Caption = 'Quanti giorni mi servono? '
+    TabOrder = 3
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 392
+    Height = 25
+    Top = 168
+    Width = 99
+    Caption = 'Con la paghetta'
+    TabOrder = 4
+    OnClick = Button3Click
+  end
+  object Memo1: TMemo
+    Left = 112
+    Height = 337
+    Top = 224
+    Width = 258
+    Lines.Strings = (
+      ''
+    )
+    ScrollBars = ssVertical
+    TabOrder = 5
   end
 end

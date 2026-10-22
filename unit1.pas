@@ -9,17 +9,20 @@ uses
 
 type
 
-  { TEditNumero }
+  { TForm1 }
 
-  TEditNumero = class(TForm)
-    ButtonNuova: TButton;
-    ButtonProva: TButton;
-    EditNumero: TEdit;
+  TForm1 = class(TForm)
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    Edit1: TEdit;
+    Edit2: TEdit;
     Label1: TLabel;
-    LabelRisposta: TLabel;
-    procedure ButtonNuovaClick(Sender: TObject);
-    procedure ButtonProvaClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    Label2: TLabel;
+    Memo1: TMemo;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
   private
 
   public
@@ -27,53 +30,77 @@ type
   end;
 
 var
-  EditNumero: TEditNumero;
-    segreto: Integer;     // il numero pensato dal computer
-  tentativi: Integer;   // quante prove hai fatto
+  Form1: TForm1;
 
 implementation
 
 {$R *.lfm}
 
-{ TEditNumero }
+{ TForm1 }
 
-procedure TEditNumero.FormCreate(Sender: TObject);
+procedure TForm1.Button1Click(Sender: TObject);
+var giorno, euro, totale: integer;
 begin
-    Randomize;                     // mescola i numeri a caso
-  segreto := Random(100) + 1;    // un numero da 1 a 100
-  tentativi := 0;
+  Randomize;
+  Memo1.Clear;
+  totale := 0;
+  for giorno := 1 to 7 do
+  begin
+    euro := Random(5) + 1;
+    totale := totale + euro;
+    Memo1.Lines.Add('Giorno ' + IntToStr(giorno) + ': +' + IntToStr(euro) + ' euro');
+  end;
+  Memo1.Lines.Add('In una settimana: ' + IntToStr(totale) + ' euro');
 end;
 
-procedure TEditNumero.ButtonProvaClick(Sender: TObject);
-var
-  numero: Integer;
+procedure TForm1.Button2Click(Sender: TObject);
+  var giorni, euro, totale, prezzo: integer;
 begin
-  numero := StrToInt(EditNumero.Text);
-  tentativi := tentativi + 1;
-  if numero = segreto then
+  Randomize;
+  prezzo := StrToInt(Edit2.Text);
+  Memo1.Clear;
+  totale := 0;
+  giorni := 0;
+
+  while totale < prezzo do
+  begin
+    euro := Random(5) + 1;
+    totale := totale + euro;
+    giorni := giorni + 1;
+  end;
+
+  Memo1.Lines.Add('Servono ' + IntToStr(giorni) + ' giorni.');
+  Memo1.Lines.Add('Cioè ' + IntToStr(giorni div 7) + ' settimane e ' + IntToStr(giorni mod 7) + ' giorni');
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+  var
+    giorni, euro, totale, prezzo: integer;
+  begin
+    Randomize;
+    prezzo := StrToInt(Edit2.Text);
+    Memo1.Clear;
+    totale := 0;
+    giorni := 0;
+
+    while totale < prezzo do
     begin
-      LabelRisposta.Caption := 'BOOM! Beccato in ' + IntToStr(tentativi);
-    end
-  else
-    begin
-      if numero < segreto then
-        begin
-          LabelRisposta.Caption := 'Troppo piccolo! Spara più in alto ️';
-        end
-      else
-        begin
-          LabelRisposta.Caption := 'Troppo in alto! Vai più giù ';
-        end;
+      euro := Random(5) + 1;
+      totale := totale + euro;
+      giorni := giorni + 1;
+
+      // Controllo se è sabato (multiplo di 7)
+      if giorni mod 7 = 0 then
+      begin
+        totale := totale + 10;
+        Memo1.Lines.Add('Sabato: paghetta +10 euro!');
+      end;
     end;
-  EditNumero.Clear;
+
+    Memo1.Lines.Add('Servono ' + IntToStr(giorni) + ' giorni.');
+
 end;
 
-procedure TEditNumero.ButtonNuovaClick(Sender: TObject);
-begin
-  segreto := Random(100) + 1;
-  tentativi := 0;
-  LabelRisposta.Caption := 'Partita riavviata! Nuova sfida, nuovo numero';
-end;
 
 end.
 
